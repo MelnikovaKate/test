@@ -1,0 +1,31 @@
+@import 'styles/mixins';
+@import 'styles/colors';
+@import 'styles/variables';
+
+.card {
+  display: grid;
+  transition: box-shadow 0.3s ease;
+  height: 100%;
+  border-radius: 3 * @px;
+
+  :global {
+    .ant-card-body {
+      display: grid;
+      height: 100%;
+
+      &::before, &::after {
+        display: none;
+      }
+    }
+  }
+
+  &:hover {
+    .mixin-box-shadow(@gray-neutral);
+    cursor: pointer;
+  }
+}
+
+.heading {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}

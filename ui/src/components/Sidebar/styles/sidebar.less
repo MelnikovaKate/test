@@ -1,0 +1,26 @@
+@import 'styles/variables';
+@import 'styles/layouts';
+
+// applies the rules within collapsed sidebar
+// (including hidden sidebar for mobile version)
+.sidebar-collapsed(@rules) {
+  :global(.ant-layout-sider-collapsed) & {
+    @rules();
+  }
+}
+
+// applies the rules within collapsed sidebar
+// for tablet and desktop versions (when sidebar is visible)
+.sidebar-minimized(@rules) {
+  .sidebar-collapsed({
+    .minBp(@breakpoints[mobile], {
+      @rules();
+    });
+  });
+}
+
+.hidden-in-minimized-sidebar() {
+  .sidebar-minimized({
+    display: none;
+  });
+}

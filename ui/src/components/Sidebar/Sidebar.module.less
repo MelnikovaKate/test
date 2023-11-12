@@ -1,0 +1,147 @@
+@import 'styles/colors';
+@import 'styles/variables';
+
+@import './styles/sidebar';
+
+@zIndexSidebar: 1000;
+@zIndexSidebarBackdrop: 999;
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: @zIndexSidebarBackdrop;
+  background: @text-grey;
+  opacity: 0.5;
+}
+
+:root .sideBar {
+  background-color: @white;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 0 4 * @px 12 * @px rgba(8, 46, 181, 0.12);
+  z-index: @zIndexSidebar;
+
+  .laptop({
+    position: sticky;
+  });
+
+  .desktop({
+    position: sticky;
+  });
+
+  // .ant-layout-sider-children should have overflow:visible
+  // to avoid hiding .ant-layout-sider-zero-width-trigger on mobile
+  // so using custom wrapper for overflow:hidden
+  .wrapChildren {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  :global .ant-layout-sider-zero-width-trigger {
+    width: 44 * @px;
+    height: 44 * @px;
+    top: 8 * @px;
+    right: -44 * @px;
+    border-radius: 0 3 * @px 3 * @px 0;
+    background: @neutral-text;
+  }
+}
+
+.headerSideBar {
+  position: relative;
+  border-bottom: 1 * @px solid @grey;
+
+  .controlSubMenu {
+    padding: 15 * @px 15 * @px 15 * @px 20 * @px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+
+    .sidebar-minimized({
+      padding: 15 * @px 0;
+      justify-content: center;
+    });
+
+    .subMenuButton {
+      width: 25 * @px;
+      height: 25 * @px;
+      overflow: visible;
+      cursor: pointer;
+
+      .hidden-in-minimized-sidebar();
+    }
+
+    .nameLogo {
+      display: flex;
+      align-items: center;
+      gap: 6 * @px;
+    }
+  }
+}
+
+.navigation {
+  flex-grow: 1;
+  overflow-y: scroll;
+
+  // to be visible from the footer shadow
+  padding-bottom: 5 * @px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.footerSideBar {
+  display: flex;
+  align-items: center;
+  padding: 15 * @px;
+  box-shadow: 0 -20 * @px 30 * @px @white;
+  z-index: 1;
+}
+
+.collapseSidebarButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  flex: 0 0 44 * @px;
+  margin-left: auto;
+  height: 26 * @px;
+  border-radius: 3 * @px;
+  background: @neutral-text;
+  cursor: pointer;
+}
+
+.collapseIcon {
+  transform: rotateZ(180deg);
+  transition: transform 0.3s;
+
+  .sidebar-collapsed({
+    transform: rotateZ(360deg);
+  });
+}
+
+.version {
+  color: @grey-text;
+  margin-left: 5 * @px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 13 * @px;
+  font-weight: 300;
+  letter-spacing: 0.3 * @px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .hidden-in-minimized-sidebar();
+}

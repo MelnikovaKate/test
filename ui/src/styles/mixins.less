@@ -1,0 +1,121 @@
+@import 'employees-common-styles/employees-mixins';
+
+.flex-position(@justify, @alignItems) {
+  display: flex;
+  justify-content: @justify;
+  align-items: @alignItems;
+}
+
+.mixin-text-collapse(@rows, @wordBreak: break-word) {
+  display: -webkit-box;
+  -webkit-line-clamp: @rows;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: @wordBreak;
+}
+
+.mixin-box-shadow(@color) {
+  @box-shadow: 0 4px 8px 0 rgba(@color, 0.6);
+
+  -webkit-box-shadow: @box-shadow;
+  -moz-box-shadow: @box-shadow;
+  box-shadow: @box-shadow;
+}
+
+.mixin-grid-auto-fill(@size, @repeatNumber: auto-fill) {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-gap: 16 * @px;
+  grid-template-columns: repeat(@repeatNumber, minmax(@size, 1fr));
+}
+
+.mixin-min-grid-breakpoints(@breakpoint) {
+  @media (min-width: @breakpoint) {
+    grid-template-columns: repeat(1fr);
+  }
+}
+
+.mixin-search-input() {
+  .searchInput {
+    width: 400 * @px;
+    min-width: 200 * @px;
+
+    :global {
+      .ant-input,
+      .ant-btn {
+        height: 32 * @px;
+      }
+    }
+  }
+}
+
+.page-header() {
+  .title {
+    margin-top: 20 * @px;
+    font-weight: 700;
+    font-size: 18 * @px;
+    height: 64 * @px;
+    display: flex;
+    align-items: center;
+    border-radius: 3 * @px;
+
+    :global {
+      .ant-card-head-title {
+        font-size: 18 * @px;
+        padding: 20 * @px 0;
+        font-weight: 700;
+      }
+
+      .ant-card-head {
+        width: 100%;
+      }
+
+      .ant-card-body {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.mixin-row-expand() {
+  .svgArrow {
+    transition: transform 0.3s ease-in-out;
+
+    &.rotate {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.mixin-profile-name() {
+  :global {
+    .profile-name, .group-name {
+      color: @text-middle;
+      text-decoration-line: none;
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 50%;
+        width: 0;
+        height: 1px;
+        background-color: @text-middle;
+        transition: width 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      &:hover:before {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.mixin-back-top-btn() {
+  .backTop {
+    bottom: 6rem;
+    z-index: 100;
+  }
+}

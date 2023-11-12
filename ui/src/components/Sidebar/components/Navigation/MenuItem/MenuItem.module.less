@@ -1,0 +1,113 @@
+@import 'styles/colors';
+@import 'styles/variables';
+
+@import '../../../styles/sidebar';
+
+.navigationItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 14 * @px;
+  font-weight: 500;
+  line-height: 20 * @px;
+  letter-spacing: 0.25 * @px;
+  padding: 14 * @px 20 * @px;
+  color: @text-middle;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  background: @white;
+  box-sizing: border-box;
+  width: 100%;
+  white-space: nowrap;
+  user-select: none;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    margin: 2px 0;
+    overflow: visible;
+    display: none;
+    fill: @text-middle;
+
+    .sidebar-minimized({
+      display: block;
+    })
+  }
+
+  & + .navigationItem {
+    border-top: 1 * @px solid;
+  }
+
+  .countBadge {
+    color: @white;
+    border: 1 * @px solid @white;
+    background-color: @green-sage;
+    border-radius: 50%;
+    width: 20 * @px;
+    height: 20 * @px;
+    font-size: 12 * @px;
+    font-weight: 500;
+    margin-left: 16 * @px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 20 * @px;
+    position: absolute;
+    right: 20 * @px;
+  }
+
+  svg {
+    width: 16 * @px;
+    height: 16 * @px;
+    margin: 2 * @px 0;
+    overflow: visible;
+    fill: @text-middle;
+  }
+
+  .text {
+    margin-left: 15 * @px;
+
+    .sidebar-minimized({
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: none;
+    })
+  }
+
+  &.active {
+    color: @black;
+    background-color: @background-active;
+
+    svg {
+      fill: @black;
+    }
+
+    &:before {
+      position: absolute;
+      border-left: 4 * @px solid @primary-color;
+      left: 0;
+      top: 0;
+      content: '';
+      height: 100%;
+    }
+  }
+
+  &:hover {
+    background-color: @background-active;
+  }
+
+  &.navigationLink {
+    .sidebar-minimized({
+      justify-content: center;
+    });
+  }
+
+  .sidebar-minimized({
+    justify-content: center;
+    padding: 14 * @px 6 * @px;
+    min-width: unset;
+  });
+}

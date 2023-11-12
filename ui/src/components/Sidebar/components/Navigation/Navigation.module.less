@@ -1,0 +1,82 @@
+@import 'styles/colors';
+@import 'styles/variables';
+
+@import '../../styles/sidebar';
+
+.groupsNavigation {
+  flex: 1 1 auto;
+
+  .groupNavigation {
+    display: flex;
+    flex-direction: column;
+
+    & + .groupNavigation {
+      border-top: 1 * @px solid @grey;
+    }
+
+    .nameGroupNavigation {
+      display: inline-block;
+      padding: 16 * @px 20 * @px 12 * @px;
+      color: @text-middle;
+      font-size: 13 * @px;
+      font-weight: 300;
+      letter-spacing: 0.3 * @px;
+
+      .sidebar-minimized({
+        padding: 16 * @px 10 * @px 12 * @px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+      });
+    }
+
+    .navigation {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .badgeWrap {
+      position: relative;
+      display: flex;
+      align-self: center;
+      margin: 2px 0;
+
+      svg {
+        margin: 0;
+      }
+
+      .countBadge {
+        display: none;
+
+        .sidebar-minimized({
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          transform: translate(50%, -50%);
+        });
+      }
+    }
+  }
+}
+
+.countBadge {
+  color: @white;
+  border: 1 * @px solid @white;
+  background-color: @green-sage;
+  border-radius: 50%;
+  width: 20 * @px;
+  height: 20 * @px;
+  font-size: 12 * @px;
+  font-weight: 500;
+  margin-left: 16 * @px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 20 * @px;
+  right: 20 * @px;
+
+  .hidden-in-minimized-sidebar();
+}
