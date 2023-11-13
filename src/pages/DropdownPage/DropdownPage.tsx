@@ -4,6 +4,7 @@ import styles from './DropdownPage.module.less';
 import { Dropdown } from 'components/Dropdown';
 import { Tabs } from 'components/Tabs';
 import { Select } from 'components/Select';
+import { ButtonText } from 'enums/ButtonText.enum';
 
 interface TabsValues {
     id: string;
@@ -44,7 +45,7 @@ export const DropdownPage = () => {
     return (
         <div className={styles.container}>
             <Dropdown
-                buttonText={'ЖК, Округ, район, метро'}
+                buttonText={ButtonText.SearchText}
                 buttonContent={
                     selectedTabsValues && totalCount > 0 && (
                         <span className={styles.label}>
@@ -55,7 +56,7 @@ export const DropdownPage = () => {
             >
                 <Tabs tabsData={filterData.map(data => data.name)} >
                     {filterData.map(data => (
-                        <div>
+                        <div key={data.id}>
                             <Select
                                 options={data.data}
                                 dataId={data.id}

@@ -16,7 +16,7 @@ export const Tag: FC<ITag> = ({ values, handleDelete }) => {
             {values && values.length > 0 && (
                 <div className={styles.tagContainer}>
                     {values.map((item: any) => (
-                        <div className={styles.tag}>
+                        <div className={styles.tag} key={item}>
                             {item}
                             <button className={styles.deleteButton} onClick={() => handleDelete(item)}>x</button>
                         </div>

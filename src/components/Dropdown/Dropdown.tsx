@@ -1,6 +1,7 @@
 import React, { useState, PropsWithChildren, ReactNode, FC } from 'react';
 import { Menu } from '@headlessui/react';
 import styles from './Dropdown.module.less';
+import search from '../../asserts/search.svg';
 import cn from 'classnames';
 
 interface IDropdown extends PropsWithChildren {
@@ -19,8 +20,10 @@ export const Dropdown: FC<IDropdown> = ({ buttonText, buttonContent, children}) 
                         className={cn(styles.button, isOpen && styles.active)}
                         onClick={() => setIsOpen(prev => !prev)}
                     >
-                        {/* <img src='../../../public/asserts/search.svg' /> */}
-                        {buttonText}
+                        <div className={styles.group}>
+                            <img src={search} alt='search' />
+                            {buttonText}
+                        </div>
                         {buttonContent}
                     </Menu.Button>
                     {isOpen && (

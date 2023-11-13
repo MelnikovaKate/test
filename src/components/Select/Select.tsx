@@ -1,8 +1,9 @@
-import React, { useState, FC, Dispatch, SetStateAction } from 'react';
+import React, { useState, FC, Dispatch, SetStateAction, useRef, useEffect } from 'react';
 import { Listbox } from '@headlessui/react';
 import styles from './Select.module.less';
 import cn from 'classnames';
 import { Tag } from 'components/Tag';
+import tick from '../../asserts/tick.svg';
 
 interface ISelect {
     options: string[];
@@ -14,6 +15,27 @@ interface ISelect {
 
 export const Select: FC<ISelect> = ({ options, selectedValues, dataId, handleSelect, handleDelete }) => {
     const [values, setValues] = useState<string[]>(selectedValues);
+    const listRef = useRef<HTMLDivElement>(null);
+    const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
+  
+    useEffect(() => {
+        const handleScroll = () => {
+          if (listRef.current) {
+            const { scrollTop, scrollHeight, clientHeight } = listRef.current;
+            setIsScrolledToBottom(scrollHeight - scrollTop === clientHeight);
+          }
+        };
+    
+        if (listRef.current) {
+          listRef.current.addEventListener('scroll', handleScroll);
+        }
+    
+        return () => {
+          if (listRef.current) {
+            listRef.current.removeEventListener('scroll', handleScroll);
+          }
+        };
+      }, []);
 
     const onSelect = (dataId: string, values: string[]) => {
         setValues(values);
@@ -24,26 +46,27 @@ export const Select: FC<ISelect> = ({ options, selectedValues, dataId, handleSel
         setValues((prev) => prev?.filter(i => i !== value));
         handleDelete(dataId, value);
     }
+
     
     return (
         <div className={styles.container}>
             <Tag values={values} handleDelete={(value) => onDelete(dataId, value)} />
-            <div className={styles.wrapper}>
+            <div className={cn(styles.wrapper, isScrolledToBottom ? styles.listShadowHidden : '')} ref={listRef}>
                 <Listbox value={values} onChange={(values) => onSelect(dataId, values)} multiple>
-                <Listbox.Options static>
-                    {options.map((option) => (
-                        <Listbox.Option key={option} value={option} className={styles.option}>
-                            {({ selected }) => (
-                                <div className={styles.optionsGroup}>
-                                    <span>{option}</span>
-                                    <span className={cn(styles.selectOption, selected && styles.selected)}>
-                                        {/* {checked && <img src='../../../public/asserts/Tick.svg' />} */}
-                                    </span>
-                                </div>
-                            )}
-                        </Listbox.Option>
-                    ))}
-                </Listbox.Options>
+                    <Listbox.Options static>
+                        {options.map((option) => (
+                            <Listbox.Option key={option} value={option} className={styles.option}>
+                                {({ selected }) => (
+                                    <div className={styles.optionsGroup}>
+                                        <span>{option}</span>
+                                        <span className={cn(styles.selectOption, selected && styles.selected)}>
+                                            {selected && <img src={tick} alt='tick'/>}
+                                        </span>
+                                    </div>
+                                )}
+                            </Listbox.Option>
+                        ))}
+                    </Listbox.Options>
                 </Listbox>
             </div>
         </div>
