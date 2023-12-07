@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Note } from 'types/note.type';
+import { NoteType } from 'types/note.type';
 import { AppState } from './store';
+import { distinct } from 'helpers/distinct';
 
 interface INotesState {
-  notes: Note[];
+  notes: NoteType[];
 }
 
 interface IEditNote {
@@ -22,7 +23,7 @@ const notesSlice = createSlice({
   name: 'notes',
   initialState,
   reducers: {
-    setNote(state, { payload }: PayloadAction<Note>) {
+    setNote(state, { payload }: PayloadAction<NoteType>) {
       state.notes.push(payload);
     },
 
@@ -45,19 +46,11 @@ const notesSlice = createSlice({
         notes: state.notes.filter(note => note.id !== payload)
       }
     },
-    // deleteTag(state, { payload }: PayloadAction<Note[]>) {
-    //   state.notes
-    // },
     deleteAllNotes(state) {
       state.notes = initialState.notes
     }
   },
 });
-
-const distinct = (array: string[]) => {
-  return Array.from(new Set(array));
-}
-
 
 export const {
     setNote,

@@ -9,6 +9,7 @@ interface IModalWindow extends PropsWithChildren {
     buttonText: string;
     buttonIcon?: React.ReactNode;
     submitButtonText?: string;
+    handleOpen?: () => void;
     handleSubmit: () => void;
     handleCancel?: () => void;
 }
@@ -19,14 +20,16 @@ export const ModalWindow: FC<IModalWindow> = ({
     buttonIcon,
     submitButtonText = 'Submit',
     handleSubmit,
+    handleOpen = () => {},
     handleCancel = () => {},
     children 
 }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [size, setSize] = useState<SizeType>('large');
+    const [size] = useState<SizeType>('large');
 
     const showModal = () => {
       setIsModalOpen(true);
+      handleOpen();
     };
   
     const onSubmit = () => {
@@ -44,7 +47,14 @@ export const ModalWindow: FC<IModalWindow> = ({
             <Button type="primary" icon={buttonIcon} size={size} onClick={showModal} className={styles.button}>
                 {buttonText}
             </Button>
-            <Modal title={title} open={isModalOpen} okText={submitButtonText} okButtonProps={{className: styles.button}} onOk={onSubmit} onCancel={onCancel}>
+            <Modal
+                title={title}
+                open={isModalOpen}
+                okText={submitButtonText}
+                okButtonProps={{className: styles.button}}
+                onOk={onSubmit}
+                onCancel={onCancel}
+            >
                 {children}
             </Modal>
         </div>
