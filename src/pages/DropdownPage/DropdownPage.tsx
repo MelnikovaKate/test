@@ -3,7 +3,7 @@ import { filterData } from 'constants/filterData';
 import styles from './DropdownPage.module.less';
 import { Dropdown } from 'components/Dropdown';
 import { Tabs } from 'components/Tabs';
-import { Select } from 'components/Select';
+import { CustomSelect } from 'components/CustomSelect';
 import { ButtonText } from 'enums/ButtonText.enum';
 
 interface TabsValues {
@@ -57,7 +57,7 @@ export const DropdownPage = () => {
                 <Tabs tabsData={filterData.map(data => data.name)} >
                     {filterData.map(data => (
                         <div key={data.id}>
-                            <Select
+                            <CustomSelect
                                 options={data.data}
                                 dataId={data.id}
                                 selectedValues={getTabValues(data.id)}

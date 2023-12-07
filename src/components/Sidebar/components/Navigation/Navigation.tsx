@@ -24,6 +24,12 @@ export const Navigation = ({ active }: IProps) => {
           <li className={styles.groupNavigation}>
               <>
                 <MenuLink
+                  text='Notes editor'
+                  path={Path.NotesEditor}
+                />
+              </>
+              <>
+                <MenuLink
                   text='Dropdown'
                   path={Path.Dropdown}
                 />

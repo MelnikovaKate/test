@@ -1,16 +1,12 @@
-import React, { Fragment, useState, FC, ReactNode, PropsWithChildren } from 'react';
-import { Menu, Tab, Listbox } from '@headlessui/react';
-import { filterData } from 'constants/filterData';
-import styles from './Tag.module.less';
-import cn from 'classnames';
-import { TabType } from 'types/filterData.type';
+import React, { FC } from 'react';
+import styles from './CustomTag.module.less';
 
-interface ITag {
+interface ICustomTag {
     values: string[];
     handleDelete: (value: string) => void;
 }
 
-export const Tag: FC<ITag> = ({ values, handleDelete }) => {  
+export const CustomTag: FC<ICustomTag> = ({ values, handleDelete }) => {  
     return (
         <div>
             {values && values.length > 0 && (

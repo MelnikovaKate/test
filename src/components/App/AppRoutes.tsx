@@ -5,6 +5,7 @@ import { Main } from './Main';
 import React from 'react';
 import { DropdownPage } from 'pages/DropdownPage';
 import { Path } from 'enums/path.enum';
+import { NotesEditorPage } from 'pages/NotesEditorPage';
 
 interface IAppRoute {
   path: Path | string;
@@ -24,6 +25,16 @@ export const AppRoutes = () => {
           </Main>
         ),
         children: [
+          {
+            path: Path.NotesEditor,
+            component: <Outlet key={Path.NotesEditor} />,
+            children: [
+              {
+                path: '',
+                component: <NotesEditorPage />,
+              },
+            ],
+          },
           {
             path: Path.Dropdown,
             component: <Outlet key={Path.Dropdown} />,

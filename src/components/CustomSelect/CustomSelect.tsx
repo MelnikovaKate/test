@@ -1,11 +1,11 @@
 import React, { useState, FC, Dispatch, SetStateAction, useRef, useEffect } from 'react';
 import { Listbox } from '@headlessui/react';
-import styles from './Select.module.less';
+import styles from './CustomSelect.module.less';
 import cn from 'classnames';
-import { Tag } from 'components/Tag';
+import { CustomTag } from 'components/CustomTag';
 import tick from '../../asserts/tick.svg';
 
-interface ISelect {
+interface ICustomSelect {
     options: string[];
     selectedValues: string[];
     dataId: string;
@@ -13,7 +13,7 @@ interface ISelect {
     handleDelete: (dataId: string, deletedItem: string) => void;
 }
 
-export const Select: FC<ISelect> = ({ options, selectedValues, dataId, handleSelect, handleDelete }) => {
+export const CustomSelect: FC<ICustomSelect> = ({ options, selectedValues, dataId, handleSelect, handleDelete }) => {
     const [values, setValues] = useState<string[]>(selectedValues);
     const listRef = useRef<HTMLDivElement>(null);
     const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
@@ -50,7 +50,7 @@ export const Select: FC<ISelect> = ({ options, selectedValues, dataId, handleSel
     
     return (
         <div className={styles.container}>
-            <Tag values={values} handleDelete={(value) => onDelete(dataId, value)} />
+            <CustomTag values={values} handleDelete={(value) => onDelete(dataId, value)} />
             <div className={cn(styles.wrapper, isScrolledToBottom ? styles.listShadowHidden : '')} ref={listRef}>
                 <Listbox value={values} onChange={(values) => onSelect(dataId, values)} multiple>
                     <Listbox.Options static>

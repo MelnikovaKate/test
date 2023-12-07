@@ -1,3 +1,4 @@
 export enum Path {
-    Dropdown = 'test' 
+    NotesEditor = 'test',
+    Dropdown = 'dropdown' 
 }
