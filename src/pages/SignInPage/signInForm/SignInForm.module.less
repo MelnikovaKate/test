@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    min-width: 30%;
+}
+
+.icon {
+    width: 100%;
+    justify-content: center;
+
+    svg {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.button {
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    color: white;
+    border-radius: 10px;
+    height: 40px;
+    background: #515c7a;
+
+    &:hover {
+        background: #34436d !important;
+    }
+}
+
+.errorText {
+    color: #ff8980;
+    letter-spacing: 0.5px;
+}
+
+.errorMessage {
+    padding: 20px;
+    background: rgb(255 137 128 / 17%);
+    border-radius: 10px;
+    border: 1px solid #ff8980;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ff8980;
+    letter-spacing: 0.5px;
+}

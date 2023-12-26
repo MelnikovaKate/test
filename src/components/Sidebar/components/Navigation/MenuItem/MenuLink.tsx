@@ -11,6 +11,7 @@ interface IProps {
   readonly path?: string;
   readonly active?: boolean;
   readonly navigationLink?: boolean;
+  readonly handleClick?: () => void;
 }
 
 export const MenuLink = ({
@@ -19,6 +20,7 @@ export const MenuLink = ({
   children,
   active,
   navigationLink,
+  handleClick
 }: PropsWithChildren<IProps>) => {
   const getNavLinkClassName = ({ isActive }: { isActive?: boolean }) =>
     classNames(styles.navigationItem, { [styles.active]: isActive, [styles.navigationLink]: navigationLink });
@@ -27,7 +29,7 @@ export const MenuLink = ({
     <Tooltip placement="right">
       <div>
         {path ? (
-          <NavLink to={path} className={getNavLinkClassName}>
+          <NavLink to={path} className={getNavLinkClassName} onClick={handleClick}>
             <span className={styles.text}>{text}</span>
             {children}
           </NavLink>

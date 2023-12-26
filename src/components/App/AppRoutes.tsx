@@ -6,6 +6,10 @@ import React from 'react';
 import { DropdownPage } from 'pages/DropdownPage';
 import { Path } from 'enums/path.enum';
 import { NotesEditorPage } from 'pages/NotesEditorPage';
+import { PhotoGalleryPage } from 'pages/PhotoGalleryPage';
+import { PhotoViewPage } from 'pages/PhotoViewPage';
+import { PrivateRoute } from 'components/PrivateRoute';
+import { SignInPage } from 'pages/SignInPage';
 
 interface IAppRoute {
   path: Path | string;
@@ -20,11 +24,33 @@ export const AppRoutes = () => {
       {
         path: '',
         component: (
-          <Main>
-            <Outlet />
-          </Main>
+          <PrivateRoute>
+            <Main>
+              <Outlet />
+            </Main>
+          </PrivateRoute>
         ),
         children: [
+          {
+            path: Path.PhotoGallery,
+            component: <Outlet key={Path.PhotoGallery} />,
+            children: [
+              {
+                path: '',
+                component: <PhotoGalleryPage />,
+              },
+            ],
+          },
+          {
+            path: Path.Photo,
+            component: <Outlet key={Path.Photo} />,
+            children: [
+              {
+                path: ':id',
+                component: <PhotoViewPage />,
+              },
+            ],
+          },
           {
             path: Path.NotesEditor,
             component: <Outlet key={Path.NotesEditor} />,
@@ -47,6 +73,16 @@ export const AppRoutes = () => {
           },
         ],
       },
+      {
+        path: Path.SignIn,
+        component: <Outlet key={Path.SignIn} />,
+        children: [
+          {
+            path: '',
+            component: <SignInPage />,
+          }
+        ]
+      }
     ],
     [],
   );

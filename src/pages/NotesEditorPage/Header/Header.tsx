@@ -63,6 +63,7 @@ export const Header: FC<IHeader> = ({
                     allowClear
                     defaultValue=''
                     value={noteText}
+                    placeholder='Enter a note. If you want to add a tag, write the symbol # before the tag value. For example: #tag'
                     onChange={(e) => setNoteText(e.target.value)}
                 />
             </ModalWindow>

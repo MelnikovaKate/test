@@ -1,4 +1,7 @@
 export enum Path {
-    NotesEditor = 'test',
-    Dropdown = 'dropdown' 
+    NotesEditor = 'notesEditor',
+    Dropdown = 'dropdown',
+    SignIn = 'test',
+    PhotoGallery = 'photoGallery',
+    Photo = 'photo',
 }

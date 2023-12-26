@@ -12,6 +12,9 @@ import {
 } from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 import notesSlice from './notes.slice';
+import { authReducer } from './auth.slice';
+import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
+import { RootState } from '@reduxjs/toolkit/query';
 
 const createNoopStorage = () => ({
   getItem(_key: any) {
@@ -42,6 +45,7 @@ const notesPersistConfig = {
 };
 
 const rootReducer = combineReducers({
+  auth: authReducer,
   notes: persistReducer(notesPersistConfig, notesSlice),
 });
 
@@ -67,3 +71,5 @@ export const persistor = persistStore(store);
 
 export type AppState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
