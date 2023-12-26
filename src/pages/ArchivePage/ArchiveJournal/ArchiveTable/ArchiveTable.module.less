@@ -1,0 +1,53 @@
+@import 'styles/colors';
+@import 'styles/variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.table {
+  width: 100%;
+  text-align: start;
+  border-radius: 8px 8px 0 0;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.thead {
+  background: @light-blue;
+
+  .th {
+    position: relative;
+    font-weight: 600;
+    text-align: start;
+    padding: 12px;
+    overflow-wrap: break-word
+  }
+}
+
+.td {
+  position: relative;
+  padding: 16px;
+  overflow-wrap: break-word;
+  border-bottom: 1px solid #e0eaf1;
+  cursor: pointer;
+}
+
+.sort {
+  margin-left: 6px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  width: 16px !important;
+  opacity: 0.4;
+
+  &.active {
+    opacity: 1;
+  }
+
+  svg {
+    color: @dark-blue;
+  }
+}

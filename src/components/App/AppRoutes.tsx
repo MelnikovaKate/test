@@ -10,6 +10,8 @@ import { PhotoGalleryPage } from 'pages/PhotoGalleryPage';
 import { PhotoViewPage } from 'pages/PhotoViewPage';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { SignInPage } from 'pages/SignInPage';
+import { ApplicationsPage } from 'pages/ApplicationsPage';
+import { ArchivePage } from 'pages/ArchivePage';
 
 interface IAppRoute {
   path: Path | string;
@@ -68,6 +70,26 @@ export const AppRoutes = () => {
               {
                 path: '',
                 component: <DropdownPage />,
+              },
+            ],
+          },
+          {
+            path: Path.Applications,
+            component: <Outlet key={Path.Applications} />,
+            children: [
+              {
+                path: '',
+                component: <ApplicationsPage />,
+              },
+            ],
+          },
+          {
+            path: Path.Archive,
+            component: <Outlet key={Path.Archive} />,
+            children: [
+              {
+                path: '',
+                component: <ArchivePage />,
               },
             ],
           },

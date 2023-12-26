@@ -4,4 +4,6 @@ export enum Path {
     SignIn = 'test',
     PhotoGallery = 'photoGallery',
     Photo = 'photo',
+    Applications = 'applications',
+    Archive = 'archive'
 }

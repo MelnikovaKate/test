@@ -62,6 +62,19 @@ export const Navigation = ({ active }: IProps) => {
                   path={Path.Dropdown}
                 />
               </>
+              <br />
+              <br />
+              <>
+                <MenuLink
+                  text='Журнал заявок'
+                  path={Path.Applications}
+                />
+                <MenuLink
+                  text='Журнал архива'
+                  path={Path.Archive}
+                >
+                </MenuLink>
+              </>
           </li>
         </ul>
       </div>
