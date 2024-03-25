@@ -4,6 +4,7 @@ import styles from './Filters.module.less';
 import { Collapse } from 'components/Collapse';
 import { IBeerFilter } from 'types/beerFilter.type';
 import { useFilters } from './hooks/useFilters';
+import { FiltersText } from 'enums/FiltersText.enum';
 
 const { Text } = Typography;
 
@@ -20,19 +21,20 @@ export const Filters: FC<IFiltersProps> = ({ countries, handleFilters }) => {
         onSearchTitle,
         onChangeMinAlcohol,
         onChangeMaxAlcohol,
-        handleChangeCountry
+        handleChangeCountry,
+        handleKeyDown
     } = useFilters(countries, handleFilters);
       
     return (
         <div className={styles.container}>
-            <Collapse title='Filters' collapsed>
+            <Collapse title={FiltersText.Filters} collapsed>
                 <div className={styles.filterPanel}>
                     <div className={styles.lineGroup}>
                         <div className={styles.columnGroup}>
-                            <Text className={styles.label}>Title</Text>
+                            <Text className={styles.label}>{FiltersText.Title}</Text>
                             <div className={styles.buttonsWrapper}>
                                 <Input
-                                    placeholder="Enter the title of the beer"
+                                    placeholder={FiltersText.PlaceholderTitle}
                                     onChange={(e) => onSearchTitle(e.target.value)}
                                     style={{ width: 304 }}
                                     allowClear
@@ -40,35 +42,37 @@ export const Filters: FC<IFiltersProps> = ({ countries, handleFilters }) => {
                             </div>
                         </div>
                         <div className={styles.columnGroup}>
-                            <Text className={styles.label}>Alcohol</Text>
+                            <Text className={styles.label}>{FiltersText.Alcohol}</Text>
                             <div className={styles.buttonsWrapper}>
                                 <Space direction="horizontal">
                                     <Input
                                         ref={minAlcohol}
-                                        placeholder="3"
+                                        placeholder={FiltersText.PlaceholderMinAlcohol}
                                         allowClear
                                         addonAfter={'%'}
                                         style={{ width: 100 }}
                                         onChange={(e) => onChangeMinAlcohol(e.target.value)}
+                                        onKeyDown={handleKeyDown}
                                     />
                                     <Input
                                         ref={maxAlcohol}
-                                        placeholder="8"
+                                        placeholder={FiltersText.PlaceholderMaxAlcohol}
                                         allowClear
                                         addonAfter={'%'}
                                         style={{ width: 100 }}
                                         onChange={(e) => onChangeMaxAlcohol(e.target.value)}
+                                        onKeyDown={handleKeyDown}
                                     />
                                 </Space>
                             </div>
                         </div>
                         <div className={styles.columnGroup}>
-                            <Text className={styles.label}>Country</Text>
+                            <Text className={styles.label}>{FiltersText.Country}</Text>
                             <div className={styles.buttonsWrapper}>
                                 <Select
                                     mode="multiple"
                                     style={{ width: '300px' }}
-                                    placeholder="Select country"
+                                    placeholder={FiltersText.PlaceholderCountry}
                                     onChange={handleChangeCountry}
                                     optionLabelProp="label"
                                     options={options}

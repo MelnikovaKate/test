@@ -50,6 +50,12 @@ export const useFilters = (countries: string[], handleFilters: (filters: IBeerFi
         }
     }
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (!((e.key >= '0' && e.key <= '9') || e.key === '.')) {
+          e.preventDefault();
+        }
+    };
+
     useEffect(() => {
         handleFilters(filters);
     }, [filters]);
@@ -74,6 +80,7 @@ export const useFilters = (countries: string[], handleFilters: (filters: IBeerFi
         onSearchTitle,
         onChangeMinAlcohol,
         onChangeMaxAlcohol,
-        handleChangeCountry
+        handleChangeCountry,
+        handleKeyDown
     }
 }
