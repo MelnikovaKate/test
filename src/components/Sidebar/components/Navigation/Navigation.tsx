@@ -41,6 +41,16 @@ export const Navigation = ({ active }: IProps) => {
                   path={Path.SignIn}
                   handleClick={handleLogout}
                 />
+                <br />
+                <br />
+                <>
+                  <MenuLink
+                    text='Beers'
+                    path={Path.BeersList}
+                  />
+                </>
+                <br />
+                <br />
                 <MenuLink
                   text='Photos gallery'
                   path={Path.PhotoGallery}
@@ -75,6 +85,8 @@ export const Navigation = ({ active }: IProps) => {
                 >
                 </MenuLink>
               </>
+              <br />
+              <br />
           </li>
         </ul>
       </div>

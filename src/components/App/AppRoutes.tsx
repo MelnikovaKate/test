@@ -12,6 +12,7 @@ import { PrivateRoute } from 'components/PrivateRoute';
 import { SignInPage } from 'pages/SignInPage';
 import { ApplicationsPage } from 'pages/ApplicationsPage';
 import { ArchivePage } from 'pages/ArchivePage';
+import { BeersPage } from 'pages/BeersPage';
 
 interface IAppRoute {
   path: Path | string;
@@ -90,6 +91,16 @@ export const AppRoutes = () => {
               {
                 path: '',
                 component: <ArchivePage />,
+              },
+            ],
+          },
+          {
+            path: Path.BeersList,
+            component: <Outlet key={Path.BeersList} />,
+            children: [
+              {
+                path: '',
+                component: <BeersPage />,
               },
             ],
           },

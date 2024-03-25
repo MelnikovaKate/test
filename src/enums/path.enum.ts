@@ -5,5 +5,6 @@ export enum Path {
     PhotoGallery = 'photoGallery',
     Photo = 'photo',
     Applications = 'applications',
-    Archive = 'archive'
+    Archive = 'archive',
+    BeersList = 'beers'
 }
