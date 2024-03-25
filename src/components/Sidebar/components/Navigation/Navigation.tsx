@@ -49,44 +49,7 @@ export const Navigation = ({ active }: IProps) => {
                     path={Path.BeersList}
                   />
                 </>
-                <br />
-                <br />
-                <MenuLink
-                  text='Photos gallery'
-                  path={Path.PhotoGallery}
-                />
               </>
-              <br />
-              <br />
-              <>
-                <MenuLink
-                  text='Notes editor'
-                  path={Path.NotesEditor}
-                />
-              </>
-              <br />
-              <br />
-              <>
-                <MenuLink
-                  text='Dropdown'
-                  path={Path.Dropdown}
-                />
-              </>
-              <br />
-              <br />
-              <>
-                <MenuLink
-                  text='Журнал заявок'
-                  path={Path.Applications}
-                />
-                <MenuLink
-                  text='Журнал архива'
-                  path={Path.Archive}
-                >
-                </MenuLink>
-              </>
-              <br />
-              <br />
           </li>
         </ul>
       </div>

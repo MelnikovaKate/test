@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { AppState } from './store';
-import { setAuthorizationHeaders } from 'services';
+import { setAuthorizationHeaders } from 'services/requests.service';
 
 interface IAuthState {
   token?: string | null;

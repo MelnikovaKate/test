@@ -1,7 +1,5 @@
 import { PropsWithChildren, useState, useCallback, useEffect } from "react";
-import React from "react";
-import { SignInPage } from "pages/SignInPage";
-import { setAuthorizationHeaders } from "services";
+import { setAuthorizationHeaders } from "services/requests.service";
 
 export const JwtAuth = ({ children }: PropsWithChildren<any>) => {
     const [token, setToken] = useState(localStorage.getItem('token'));

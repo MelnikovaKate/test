@@ -9,8 +9,8 @@ export const knownUsers: IUser[] = [
     },
     {
         id: '2',
-        fullName: 'Jong Dag',
-        login: 'jongdag',
+        fullName: 'John Clay',
+        login: 'johnClay',
         password: '121212',
     },
     {

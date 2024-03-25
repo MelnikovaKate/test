@@ -28,7 +28,7 @@ export const SignInForm = () => {
 
         if (authResult.isSuccessful){
             dispatch(changeAuthAction({ token: authResult.token!, username: username  }))
-            navigate(`/${Path.PhotoGallery}`);
+            navigate(`/${Path.BeersList}`);
             setError(false);
         }
     }

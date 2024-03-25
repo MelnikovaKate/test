@@ -1,1 +1,0 @@
-export const columnApplicationNames = ['Дата', 'Статус', 'Примечание'];

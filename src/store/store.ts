@@ -11,7 +11,6 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
-import notesSlice from './notes.slice';
 import { authReducer } from './auth.slice';
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
 import { RootState } from '@reduxjs/toolkit/query';
@@ -46,7 +45,6 @@ const notesPersistConfig = {
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  notes: persistReducer(notesPersistConfig, notesSlice),
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

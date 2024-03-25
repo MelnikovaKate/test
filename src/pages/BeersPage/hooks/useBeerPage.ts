@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback, useEffect } from "react";
 import { IBeerFilter } from "types/beerFilter.type";
 import { IBeerViewModel } from "types/beer.type";
 import { BeerService } from "services";
+import { distinct } from "helpers/distinct";
 
 export const useBeerPage = () => {
     const [beers, setBeers] = useState<IBeerViewModel[]>([]);
@@ -15,7 +16,7 @@ export const useBeerPage = () => {
     const countries = useMemo(() => {
         const allCountries = beers.map(beer => beer.country);
 
-        return Array.from(new Set(allCountries));
+        return distinct(allCountries);
     }, [beers]);
 
     const filteredBeers = useMemo(() => {
