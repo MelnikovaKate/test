@@ -9,7 +9,7 @@ export const SignInPage = () => {
         <div className={styles.container}>
             <div className={styles.usersContainer}>
                 {knownUsers.map(user => (
-                    <div className={styles.usersData}>
+                    <div className={styles.usersData} key={user.id}>
                         <span><b>{SignInLabel.Username}:</b> {user.login}</span>
                         <span><b>{SignInLabel.Password}:</b> {user.password}</span>
                     </div>
